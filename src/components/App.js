@@ -8,7 +8,7 @@ class App extends React.Component {
   componentDidMount(){
     const {store} = this.props;
     store.subscribe(() => {
-      console.log('UPDATED');
+      console.log('UPDATED', store.getState());
       this.forceUpdate();
     });
     // make API call
@@ -17,6 +17,7 @@ class App extends React.Component {
   }
   render() {
     const {list} = this.props.store.getState();
+    console.log("RENDER", this.props.store.getState());
     return (
       <div className="App">
         <Navbar />
@@ -28,7 +29,7 @@ class App extends React.Component {
 
           <div className="list">
             {list.map((movie, index) => (
-              <MovieCard movie={movie} key={`movies-${index}`} />
+              <MovieCard movie={movie} key={`movies-${index}`} dispatch={this.props.store.dispatch} />
             ))}
           </div>
         </div>
