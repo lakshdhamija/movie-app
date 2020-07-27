@@ -26,7 +26,6 @@ class Navbar extends React.Component {
   }
   render(){
     const {result: movie, showSearchResults} = this.props.search;
-    console.log('HELLO', movie);
     return (
         <div className="nav">
           <div className="search-container">

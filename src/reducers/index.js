@@ -53,6 +53,11 @@ export function search(state = initialSearchState, action){
                 result: action.movie,
                 showSearchResults: true
             }
+        case ADD_MOVIE_TO_LIST:
+            return{
+                ...state,
+                showSearchResults: false
+            };
         default:
             return state;
     }
