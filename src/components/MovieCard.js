@@ -38,6 +38,7 @@ class MovieCard extends React.Component {
 class MovieCardWrapper extends React.Component {
   render() {
     return (
+      // getting store directly from context rather than props
       <StoreContext.Consumer>
         {(store) => <MovieCard
           dispath={store.dispatch}
