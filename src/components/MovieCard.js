@@ -1,6 +1,6 @@
 import React from 'react';
 import { addFavourite, removeFromFavourites } from '../actions';
-import { StoreContext } from '../index';
+import { connect } from 'react-redux';
 
 class MovieCard extends React.Component {
   handleFavouriteClick = () => {
@@ -14,7 +14,7 @@ class MovieCard extends React.Component {
     dispatch(removeFromFavourites(movie));
   }
   render() {
-    const { movie, isFavourite } = this.props
+    const { movie, isFavourite } = this.props;
     return (
       <div className="movie-card">
         <div className="left">
@@ -36,19 +36,19 @@ class MovieCard extends React.Component {
   }
 }
 
-class MovieCardWrapper extends React.Component {
-  render() {
-    return (
-      // getting store directly from context rather than props
-      <StoreContext.Consumer>
-        {(store) => <MovieCard
-          dispatch={store.dispatch}
-          movie={this.props.movie}
-          isFavourite={this.props.isFavourite}
-        />}
-      </StoreContext.Consumer>
-    )
-  }
-}
+// class MovieCardWrapper extends React.Component {
+//   render() {
+//     return (
+//       // getting store directly from context rather than props
+//       <StoreContext.Consumer>
+//         {(store) => <MovieCard
+//           dispatch={store.dispatch}
+//           movie={this.props.movie}
+//           isFavourite={this.props.isFavourite}
+//         />}
+//       </StoreContext.Consumer>
+//     )
+//   }
+// }
 
-export default MovieCardWrapper;
+export default connect()(MovieCard);
