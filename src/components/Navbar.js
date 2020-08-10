@@ -1,6 +1,6 @@
 import React from 'react';
 import {addMovieToList, handleMovieSearch} from '../actions';
-import {StoreContext} from '../index';
+import {connect} from '../index';
 
 class Navbar extends React.Component {
   constructor (props){
@@ -50,15 +50,19 @@ class Navbar extends React.Component {
   }
 }
 
-class NavbarWrapper extends React.Component {
-  render() {
-    return(
-      // Consumer is used to access store without passing it as props from main component
-      <StoreContext.Consumer> 
-        {(store) => <Navbar dispatch={store.dispatch} search={this.props.search}/>}
-      </StoreContext.Consumer>
-    )
+// class NavbarWrapper extends React.Component {
+//   render() {
+//     return(
+//       // Consumer is used to access store without passing it as props from main component
+//       <StoreContext.Consumer> 
+//         {(store) => <Navbar dispatch={store.dispatch} search={this.props.search}/>}
+//       </StoreContext.Consumer>
+//     )
+//   }
+// }
+function mapStateToProps(state){
+  return {
+    search: state.search
   }
 }
-
-export default NavbarWrapper;
+export default connect(mapStateToProps)(Navbar);
