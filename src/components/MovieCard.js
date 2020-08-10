@@ -4,6 +4,7 @@ import { StoreContext } from '../index';
 
 class MovieCard extends React.Component {
   handleFavouriteClick = () => {
+    console.log(this.props);
     const { movie } = this.props;
     this.props.dispatch(addFavourite(movie));
   }
@@ -41,9 +42,8 @@ class MovieCardWrapper extends React.Component {
       // getting store directly from context rather than props
       <StoreContext.Consumer>
         {(store) => <MovieCard
-          dispath={store.dispatch}
+          dispatch={store.dispatch}
           movie={this.props.movie}
-          key={`movies-${this.props.key}`}
           isFavourite={this.props.isFavourite}
         />}
       </StoreContext.Consumer>

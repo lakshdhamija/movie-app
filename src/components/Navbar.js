@@ -55,7 +55,7 @@ class NavbarWrapper extends React.Component {
     return(
       // Consumer is used to access store without passing it as props from main component
       <StoreContext.Consumer> 
-        {(store) => <Navbar dispath={store.dispatch} search={this.props.search}/>}
+        {(store) => <Navbar dispatch={store.dispatch} search={this.props.search}/>}
       </StoreContext.Consumer>
     )
   }
