@@ -1,1 +1,1 @@
-Project hosted at: https://movie-app-2a7c4.web.app/
+Project hosted at: https://movie-app-2a7c4.web.app/ 
